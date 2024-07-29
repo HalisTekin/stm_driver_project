@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (11.3.rel1)
+# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
 ################################################################################
 
 -include ../makefile.init
@@ -9,6 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include myDrivers/Src/subdir.mk
 -include Startup/subdir.mk
 -include Src/subdir.mk
 -include objects.mk
@@ -42,14 +43,14 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 EXECUTABLES += \
 driverDevelopment.elf \
 
-MAP_FILES += \
-driverDevelopment.map \
-
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
 driverDevelopment.list \
+
+OBJCOPY_BIN += \
+driverDevelopment.bin \
 
 
 # All Target
@@ -59,8 +60,8 @@ all: main-build
 main-build: driverDevelopment.elf secondary-outputs
 
 # Tool invocations
-driverDevelopment.elf driverDevelopment.map: $(OBJS) $(USER_OBJS) C:\Users\pvs.halis.tekin\Documents\GitHub\stm_driver_project\driverDevelopment\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "driverDevelopment.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\pvs.halis.tekin\Documents\GitHub\stm_driver_project\driverDevelopment\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="driverDevelopment.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+driverDevelopment.elf: $(OBJS) $(USER_OBJS) C:\Users\TT\Documents\GitHub\stm_driver_project\driverDevelopment\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "driverDevelopment.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\TT\Documents\GitHub\stm_driver_project\driverDevelopment\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="driverDevelopment.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -74,12 +75,17 @@ driverDevelopment.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEP
 	@echo 'Finished building: $@'
 	@echo ' '
 
+driverDevelopment.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "driverDevelopment.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) default.size.stdout driverDevelopment.elf driverDevelopment.list driverDevelopment.map
+	-$(RM) default.size.stdout driverDevelopment.bin driverDevelopment.elf driverDevelopment.list
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

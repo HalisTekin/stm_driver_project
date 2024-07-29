@@ -132,6 +132,23 @@ typedef struct
 
 }GPIO_TypeDef_t;
 
+typedef struct
+{
+	__IO uint32_t CR;				/*!< Clock control register						Address Offset = 0x0000 */
+	__IO uint32_t CFGR;				/*!< Clock configuration register				Address Offset = 0x0004 */
+	__IO uint32_t CIR;				/*!< Clock interrupt register					Address Offset = 0x0008 */
+	__IO uint32_t APB2RSTR;			/*!< APB2 peripheral reset register				Address Offset = 0x000C */
+	__IO uint32_t APB1RSTR;			/*!< APB1 peripheral reset register				Address Offset = 0x0010 */
+	__IO uint32_t AHBENR;			/*!< AHB peripheral clock enable register		Address Offset = 0x0014 */
+	__IO uint32_t APB2ENR;			/*!< APB2 peripheral clock enable register		Address Offset = 0x0018 */
+	__IO uint32_t APB1ENR;			/*!< APB1 peripheral clock enable register		Address Offset = 0x001C */
+	__IO uint32_t BDCR;				/*!< RTC domain control register	            Address Offset = 0x0020 */
+	__IO uint32_t CSR;				/*!< Control/status register		            Address Offset = 0x0024 */
+	__IO uint32_t AHBRSTR;			/*!< AHB peripheral reset register	            Address Offset = 0x0028 */
+	__IO uint32_t CFGR2;			/*!< Clock configuration register 2	            Address Offset = 0x002C */
+	__IO uint32_t CFGR3;			/*!< Clock configuration register 3	            Address Offset = 0x0030 */
+
+}RCC_TypeDef_t;
 
 #define GPIOA				( (GPIO_TypeDef_t *)(GPIOA_BASE_ADDR) )
 #define GPIOB				( (GPIO_TypeDef_t *)(GPIOB_BASE_ADDR) )
@@ -142,6 +159,7 @@ typedef struct
 #define GPIOG				( (GPIO_TypeDef_t *)(GPIOG_BASE_ADDR) )
 #define GPIOH				( (GPIO_TypeDef_t *)(GPIOH_BASE_ADDR) )
 
+#define RCC					( (RCC_TypeDef_t *)(RCC_BASE_ADDR) )
 
 
 
