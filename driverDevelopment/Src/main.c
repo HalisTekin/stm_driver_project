@@ -21,8 +21,7 @@
 
 int main(void)
 {
-
-
+	RCC_GPIOA_CLK_ENABLE();
     /* Loop forever */
 	for(;;);
 }

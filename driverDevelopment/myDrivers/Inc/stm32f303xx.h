@@ -12,6 +12,11 @@
 
 #define __IO volatile
 
+#define SET_BIT(REG, BIT)		( (REG) |= 	(BIT) )
+#define CLEAR_BIT(REG, BIT)		( (REG) &= ~(BIT) )
+#define READ_BIT(REG, BIT)		( (REG) & 	(BIT) )
+#define UNUSED(x)				(void)x
+
 /*
  *  Memory Base Address
  */
@@ -161,13 +166,12 @@ typedef struct
 
 #define RCC					( (RCC_TypeDef_t *)(RCC_BASE_ADDR) )
 
+#define RCC_AHBENR_GPIOAEN_Pos		(17U)
+#define RCC_AHBENR_GPIOAEN_Msk		(0x1 << RCC_AHBENR_GPIOAEN_Pos)
+#define RCC_AHBENR_GPIOAEN			RCC_AHBENR_GPIOAEN_Msk
 
 
-
-
-
-
-
+#include "RCC.h"
 
 
 #endif /* INC_STM32F303XX_H_ */
