@@ -22,6 +22,16 @@
 int main(void)
 {
 	RCC_GPIOA_CLK_ENABLE();
+
+	GPIO_InitTypeDef_t configure_struct = {0};
+	configure_struct.Mode = GPIO_MODE_OUTPUT;
+	configure_struct.Otype = GPIO_OTYPE_PP;
+	configure_struct.Speed = GPIO_SPEED_HIGH;
+	configure_struct.pinNumber = GPIO_PIN_5;
+
+	GPIO_Init(GPIOA, &configure_struct);
+	GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_Pin_Set);
+
     /* Loop forever */
 	for(;;);
 }

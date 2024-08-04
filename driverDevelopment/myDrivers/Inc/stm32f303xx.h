@@ -166,12 +166,29 @@ typedef struct
 
 #define RCC					( (RCC_TypeDef_t *)(RCC_BASE_ADDR) )
 
-#define RCC_AHBENR_GPIOAEN_Pos		(17U)
-#define RCC_AHBENR_GPIOAEN_Msk		(0x1 << RCC_AHBENR_GPIOAEN_Pos)
-#define RCC_AHBENR_GPIOAEN			RCC_AHBENR_GPIOAEN_Msk
+
+/*
+ *	Bit Definitions
+ */
+
+#define RCC_AHBENR_GPIOAEN_Pos		(17U)								// RCC AHBENR register GPIOAEN Bit Position
+#define RCC_AHBENR_GPIOAEN_Msk		(0x1 << RCC_AHBENR_GPIOAEN_Pos)		// RCC AHBENR register GPIOAEN Bit Mask
+#define RCC_AHBENR_GPIOAEN			RCC_AHBENR_GPIOAEN_Msk				// RCC AHBENR register GPIOAEN Macro
+
+#define RCC_AHBENR_GPIOBEN_Pos		(18U)								// RCC AHBENR register GPIOBEN Bit Position
+#define RCC_AHBENR_GPIOBEN_Msk		(0x1 << RCC_AHBENR_GPIOBEN_Pos)     // RCC AHBENR register GPIOBEN Bit Mask
+#define RCC_AHBENR_GPIOBEN			RCC_AHBENR_GPIOBEN_Msk              // RCC AHBENR register GPIOBEN Macro
+
+#define RCC_AHBENR_GPIOCEN_Pos		(19U)                               // RCC AHBENR register GPIOCEN Bit Position
+#define RCC_AHBENR_GPIOCEN_Msk		(0x1 << RCC_AHBENR_GPIOCEN_Pos)     // RCC AHBENR register GPIOCEN Bit Mask
+#define RCC_AHBENR_GPIOCEN			RCC_AHBENR_GPIOCEN_Msk              // RCC AHBENR register GPIOCEN Macro
+
+#define RCC_AHBENR_GPIODEN_Pos		(20U)                               // RCC AHBENR register GPIODEN Bit Position
+#define RCC_AHBENR_GPIODEN_Msk		(0x1 << RCC_AHBENR_GPIODEN_Pos)     // RCC AHBENR register GPIODEN Bit Mask
+#define RCC_AHBENR_GPIODEN			RCC_AHBENR_GPIODEN_Msk				// RCC AHBENR register GPIODEN Macro
 
 
 #include "RCC.h"
-
+#include "GPIO.h"
 
 #endif /* INC_STM32F303XX_H_ */
